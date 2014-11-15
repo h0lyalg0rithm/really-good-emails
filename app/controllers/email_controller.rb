@@ -1,6 +1,6 @@
 class EmailController < ApplicationController
   def receiver
-    @cat = Email.create html: params.to_s
+    @cat = Email.create html: params['body-html']
     render nothing: true
   end
 end
