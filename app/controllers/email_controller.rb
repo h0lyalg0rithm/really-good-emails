@@ -1,7 +1,7 @@
 class EmailController < ApplicationController
   def receiver
     @email = remove_links params['body-html']
-    @cat = Email.create html: @email
+    @cat = Email.create html: @email, name: params['From']
     render nothing: true
   end
   def index

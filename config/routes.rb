@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'email#index'
   resources :categories
   resources :email,only: [:index,:show]
   post 'email/receiver' => 'email#receiver'
