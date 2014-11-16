@@ -4,6 +4,13 @@ class EmailController < ApplicationController
     @cat = Email.create html: @email
     render nothing: true
   end
+  def index
+    @emails = Email.all
+  end
+  def show
+    @email = Email.find(params[:id])
+    render inline: @email.html
+  end
   private
   def remove_links data
     noko = Nokogiri::HTML(data)
