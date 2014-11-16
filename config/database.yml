@@ -10,3 +10,7 @@ development: &default
 test:
   <<: *default
   database: myapp_test
+
+production:
+  adapter: postgresql
+  url: <%= ENV['DATABASE_URL'] %>
