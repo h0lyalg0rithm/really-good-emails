@@ -14,18 +14,16 @@ class EmailController < ApplicationController
   private
   def clean_email data
     noko = Nokogiri::HTML(data)
-    data = noko.to_html
-    data = remove_forward data
-    data = remove_links data
+    noko = remove_forward noko
+    noko = remove_links data
+    noko.to_html
   end
   def remove_forward noko
-    noko.css('div')[0]
-    noko.to_html 
+    noko.css('div')[0] 
   end
   def remove_links noko
     noko.css('a').each do |a|
       a.attributes['href'].value = ""
     end
-    noko.to_html
   end
 end
